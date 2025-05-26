@@ -5,6 +5,12 @@ const pdfParse = require('pdf-parse');
 const { Document, Packer, Paragraph } = require('docx');
 const path = require('path');
 
+// Ensure uploads directory exists
+const uploadDir = path.join(__dirname, 'uploads');
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir);
+}
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
