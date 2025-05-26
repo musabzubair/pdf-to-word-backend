@@ -4,6 +4,7 @@ const fs = require('fs');
 const pdfParse = require('pdf-parse');
 const { Document, Packer, Paragraph } = require('docx');
 const path = require('path');
+const cors = require('cors');  // <-- Add this line
 
 // Ensure uploads directory exists
 const uploadDir = path.join(__dirname, 'uploads');
@@ -13,6 +14,9 @@ if (!fs.existsSync(uploadDir)) {
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// Enable CORS for all origins (you can restrict it to your frontend domain if needed)
+app.use(cors());
 
 // Configure Multer for file uploads
 const upload = multer({ dest: 'uploads/' });
